@@ -4,45 +4,50 @@ $input = "JoshuaDoBar1987<>$";
 $output = analisarSenha($input);
 
 function analisarSenha($senha){
-$resultado[3];
-$resultado[0] = function quantasMaiusculas($senha);
-$resultado[1] = function quantasMinusculas($senha);
-$resultado[2] = function quantosNumeros($senha);
-$resultado[3] = function quantosEspecial($senha);
+$resultado = array(
+    "0" => 0,
+    "1" => 0,
+    "2" => 0,
+    "3" => 0
+);
+$resultado[0] = quantasMaiusculas($senha);
+$resultado[1] = quantasMinusculas($senha);
+$resultado[2] = quantosNumeros($senha);
+$resultado[3] = quantosEspecial($senha);
 $segurancaCounter = 0;
-$seguranca = "placeholder"
-if $resultado[0] > 1
+$seguranca = "placeholder";
+if ($resultado[0] > 1)
 {
-$segurancaCounter += 1
+$segurancaCounter += 1;
 }
-if $resultado[1] > 1
+if ($resultado[1] > 1)
 {
-$segurancaCounter += 1
+$segurancaCounter += 1;
 }
-if $resultado[2] > 1
+if ($resultado[2] > 1)
 {
-$segurancaCounter += 1    
+$segurancaCounter += 1;  
 }
-if $resultado[3] > 1
+if ($resultado[3] > 1)
 {
-$segurancaCounter += 1    
+$segurancaCounter += 1;   
 }
 switch($segurancaCounter)
 {
 case 0:
-$seguranca = "Nula"
+$seguranca = "Nula";
 break;
 case 1:
-$seguranca = "Baixa"
+$seguranca = "Baixa";
 break;
 case 2:
-$seguranca = "Média"
+$seguranca = "Média";
 break;
 case 3:
-$seguranca = "Alta"
+$seguranca = "Alta";
 break;
 case 4:
-$seguranca = "Muito alta"
+$seguranca = "Muito alta";
 break;
 }
 return[
@@ -55,11 +60,11 @@ return[
 }
 function quantasMaiusculas($senha){
 $senhaTamanho = mb_strlen($senha);
-$counter = 0
-$resultado = 0
-while $counter < $senhaTamanho
+$counter = 0;
+$resultado = 0;
+while ($counter < $senhaTamanho)
 {
-if ctype_upper($senha[$counter])
+if (ctype_upper($senha[$counter]))
 {
 $resultado += 1;
 }
@@ -70,11 +75,11 @@ return $resultado;
 
 function quantasMinusculas($senha){
 $senhaTamanho = mb_strlen($senha);
-$counter = 0
-$resultado = 0
-while $counter < $senhaTamanho
+$counter = 0;
+$resultado = 0;
+while ($counter < $senhaTamanho)
 {
-if ctype_lower($senha[$counter])
+if (ctype_lower($senha[$counter]))
 {
 $resultado += 1;
 }
@@ -83,13 +88,13 @@ $counter += 1;
 return $resultado;
 }
 
-function quantasMaiusculas($senha){
+function quantosNumeros($senha){
 $senhaTamanho = mb_strlen($senha);
-$counter = 0
-$resultado = 0
-while $counter < $senhaTamanho
+$counter = 0;
+$resultado = 0;
+while ($counter < $senhaTamanho)
 {
-if is_numeric($senha[$counter])
+if (is_numeric($senha[$counter]))
 {
 $resultado += 1;
 }
@@ -98,13 +103,13 @@ $counter += 1;
 return $resultado;
 }
 
-function quantasMaiusculas($senha){
+function quantosEspecial($senha){
 $senhaTamanho = mb_strlen($senha);
-$counter = 0
-$resultado = 0
-while $counter < $senhaTamanho
+$counter = 0;
+$resultado = 0;
+while ($counter < $senhaTamanho)
 {
-if preg_match($senha[$counter])
+if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/',$senha[$counter]))
 {
 $resultado += 1;
 }
@@ -113,10 +118,10 @@ $counter += 1;
 return $resultado;
 }
 
-echo "Quantidade de maiúsculas: " . $ouput["maiusculas"] . "<br>";
-echo "Quantidade de minusculas: " . $ouput["minusculas"] . "<br>";
-echo "Quantidade de números: " . $ouput["numeros"] . "<br>";
-echo "Quantidade de caracteres especiais: " . $ouput["especiais"] . "<br>";
-echo "Segurança da senha: " . $ouput["seguranca"] . "<br>";
+echo "Quantidade de maiúsculas: " . $output["maiusculas"] . "<br>";
+echo "Quantidade de minusculas: " . $output["minusculas"] . "<br>";
+echo "Quantidade de números: " . $output["numeros"] . "<br>";
+echo "Quantidade de caracteres especiais: " . $output["especiais"] . "<br>";
+echo "Segurança da senha: " . $output["seguranca"] . "<br>";
 
 ?>
