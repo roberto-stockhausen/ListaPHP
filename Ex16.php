@@ -1,6 +1,6 @@
 <?php
 
-$input = "JoshuaDoBar1987<>$";
+$input = "JoshuaDoBar1987#";
 $output = analisarSenha($input);
 
 function analisarSenha($senha){
@@ -10,25 +10,30 @@ $resultado = array(
     "2" => 0,
     "3" => 0
 );
+$tamanho = strlen($senha);
 $resultado[0] = quantasMaiusculas($senha);
 $resultado[1] = quantasMinusculas($senha);
 $resultado[2] = quantosNumeros($senha);
 $resultado[3] = quantosEspecial($senha);
 $segurancaCounter = 0;
 $seguranca = "placeholder";
-if ($resultado[0] > 1)
+if ($resultado[0] >= 1)
 {
 $segurancaCounter += 1;
 }
-if ($resultado[1] > 1)
+if ($resultado[1] >= 1)
 {
 $segurancaCounter += 1;
 }
-if ($resultado[2] > 1)
+if ($resultado[2] >= 1)
 {
 $segurancaCounter += 1;  
 }
-if ($resultado[3] > 1)
+if ($resultado[3] >= 1)
+{
+$segurancaCounter += 1;   
+}
+if ($tamanho >= 8)
 {
 $segurancaCounter += 1;   
 }
@@ -38,15 +43,18 @@ case 0:
 $seguranca = "Nula";
 break;
 case 1:
-$seguranca = "Baixa";
+$seguranca = "Muito baixa";
 break;
 case 2:
-$seguranca = "Média";
+$seguranca = "Baixa";
 break;
 case 3:
-$seguranca = "Alta";
+$seguranca = "Média";
 break;
 case 4:
+$seguranca = "Alta";
+break;
+case 5:
 $seguranca = "Muito alta";
 break;
 }
@@ -55,6 +63,7 @@ return[
     "minusculas" => $resultado[1],
     "numeros" => $resultado[2],
     "especiais" => $resultado[3],
+    "tamanho" => $tamanho,
     "seguranca" => $seguranca
 ];
 }
@@ -118,6 +127,7 @@ $counter += 1;
 return $resultado;
 }
 
+echo "Quantidade de caracteres: " . $output["tamanho"] . "<br>";
 echo "Quantidade de maiúsculas: " . $output["maiusculas"] . "<br>";
 echo "Quantidade de minusculas: " . $output["minusculas"] . "<br>";
 echo "Quantidade de números: " . $output["numeros"] . "<br>";
