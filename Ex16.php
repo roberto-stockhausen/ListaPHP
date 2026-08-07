@@ -35,7 +35,7 @@ if ($resultado[3] >= 1)
 {
 $segurancaCounter += 1;   
 }
-if ($tamanho >= 8)
+if ($resultado[4] >= 8)
 {
 $segurancaCounter += 1;   
 }
@@ -66,7 +66,7 @@ return[
     "numeros" => $resultado[2],
     "especiais" => $resultado[3],
     "tamanho" => $resultado[4],
-    "seguranca" => $seguranca
+    "seguranca" => $resultado[5]
 ];
 }
 function quantasMaiusculas($senha){
