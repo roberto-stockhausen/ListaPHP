@@ -8,15 +8,17 @@ $resultado = array(
     "0" => 0,
     "1" => 0,
     "2" => 0,
-    "3" => 0
+    "3" => 0,
+    "4" => 0,
+    "5" => 0
 );
-$tamanho = strlen($senha);
 $resultado[0] = quantasMaiusculas($senha);
 $resultado[1] = quantasMinusculas($senha);
 $resultado[2] = quantosNumeros($senha);
 $resultado[3] = quantosEspecial($senha);
+$resultado[4] = strlen($senha);
+$resultado[5] = "placeholder";
 $segurancaCounter = 0;
-$seguranca = "placeholder";
 if ($resultado[0] >= 1)
 {
 $segurancaCounter += 1;
@@ -40,22 +42,22 @@ $segurancaCounter += 1;
 switch($segurancaCounter)
 {
 case 0:
-$seguranca = "Nula";
+$resultado[5] = "Nula";
 break;
 case 1:
-$seguranca = "Muito baixa";
+$resultado[5] = "Muito baixa";
 break;
 case 2:
-$seguranca = "Baixa";
+$resultado[5] = "Baixa";
 break;
 case 3:
-$seguranca = "Média";
+$resultado[5] = "Média";
 break;
 case 4:
-$seguranca = "Alta";
+$resultado[5] = "Alta";
 break;
 case 5:
-$seguranca = "Muito alta";
+$resultado[5] = "Muito alta";
 break;
 }
 return[
@@ -63,7 +65,7 @@ return[
     "minusculas" => $resultado[1],
     "numeros" => $resultado[2],
     "especiais" => $resultado[3],
-    "tamanho" => $tamanho,
+    "tamanho" => $resultado[4],
     "seguranca" => $seguranca
 ];
 }
