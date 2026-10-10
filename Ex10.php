@@ -5,7 +5,7 @@ $input = [5, 2, 4, 6];
 function checarNotas($notas){
 $counter = 0;
 $biggest = 0;
-$tyniest = 10;
+$tyniest = 10; // Biggest grammatical mistake of my carreer. Still not changing it to "tiniest" btw.
 $sum = 0;
 $media = 0;
 while (isset($notas[$counter]))
