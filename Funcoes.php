@@ -76,11 +76,7 @@ function inverterTexto($texto)
     $caracteres = preg_split('//u', $texto, -1, PREG_SPLIT_NO_EMPTY);
     $caracteresInvertidos = array_reverse($caracteres);
     $textoInvertido = implode('', $caracteresInvertidos);
-    $quantidade = mb_strlen($texto);
-    return [
-        "invertido" => $textoInvertido,
-        "quantidade" => $quantidade
-    ];
+    return $textoInvertido;
 }
 
 function calcularIdade($data)
@@ -126,7 +122,6 @@ if ($hora >= 12 and $hora < 18){return 'Bom dia!';}
 if ($hora >= 18){return 'Boa noite!';}
 }
 }
-echo saudacoes(false);
 
 function validarSenha($senha)
 {
@@ -150,9 +145,10 @@ $counter = 0;
 while($counter<$resultado[4])
 {
 if (ctype_upper($senha[$counter])){$resultado[0] = 1;}
-if (ctype_lower($senha[$counter])){$resultado[0] = 1;}
-if (is_numeric($senha[$counter])){$resultado[0] = 1;}
-if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/',$senha[$counter])){$resultado[0] = 1;}
+if (ctype_lower($senha[$counter])){$resultado[1] = 1;}
+if (is_numeric($senha[$counter])){$resultado[2] = 1;}
+if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/',$senha[$counter])){$resultado[3] = 1;}
+$counter += 1;
 }
 if ($resultado[0] >= 1)
 {
@@ -174,6 +170,7 @@ if ($resultado[4] >= 8)
 {
 $segurancaCounter += 1;   
 }
+echo $segurancaCounter;
 switch($segurancaCounter)
 {
 case 0:
@@ -195,13 +192,6 @@ case 5:
 $resultado[5] = "Muito alta";
 break;
 }
-return[
-    "maiusculas" => $resultado[0],
-    "minusculas" => $resultado[1],
-    "numeros" => $resultado[2],
-    "especiais" => $resultado[3],
-    "tamanho" => $resultado[4],
-    "seguranca" => $resultado[5]
-];
+return $resultado[5];
 }
 ?>
